@@ -1,7 +1,9 @@
-package com.vn.kienphung.music_52;
+package com.vn.kienphung.music_52.ui.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.vn.kienphung.music_52.R;
 
 public class MainActivity extends AppCompatActivity {
 
