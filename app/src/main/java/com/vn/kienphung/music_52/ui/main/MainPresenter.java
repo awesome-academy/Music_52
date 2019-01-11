@@ -17,4 +17,9 @@ public class MainPresenter implements MainContract.Presenter {
     public void unsubscribe() {
 
     }
+
+    @Override
+    public void startPlashScreen() {
+        mView.showSplashScreen();
+    }
 }

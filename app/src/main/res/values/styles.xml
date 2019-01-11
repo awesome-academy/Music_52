@@ -7,4 +7,16 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+    <style name="ToolBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textAppearance">@style/ToolbarTitleTheme</item>
+        <item name="android:id">@id/toolbar</item>
+    </style>
+
+    <style name="ToolbarTitleTheme" parent="TextAppearance">
+        <item name="android:textColor">@color/color_accent</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance">
+        <item name="android:textSize">@dimen/dp_16</item>
+    </style>
 </resources>
