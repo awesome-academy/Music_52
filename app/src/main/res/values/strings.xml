@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Music_52</string>
-    <string name="splash_screen">Sound Clound Music</string>
+    <string name="title_splash_screen">Sound Clound Music</string>
+    <string name="title_home">Home</string>
+    <string name="title_local_music">Local Music</string>
+    <string name="title_playlist">Playlist</string>
+    <string name="title_search">Sreach</string>
+    <string name="hint_search_message">Type here to search</string>
 </resources>
