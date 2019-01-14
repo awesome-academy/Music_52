@@ -3,7 +3,6 @@ package com.vn.kienphung.music_52.ui.home;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,10 +12,12 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.vn.kienphung.music_52.R;
 import com.vn.kienphung.music_52.data.model.Track;
+import com.vn.kienphung.music_52.data.source.remote.TrackDownloadManager;
 import com.vn.kienphung.music_52.ui.base.adapter.BaseAdapter;
 import com.vn.kienphung.music_52.ui.base.adapter.IAdapterview;
 import com.vn.kienphung.music_52.ui.base.adapter.OnLoadMoreListener;
@@ -24,7 +25,7 @@ import com.vn.kienphung.music_52.utils.StringUtil;
 
 import java.util.List;
 
-public class TrackAdapter extends BaseAdapter<Track> {
+public class TrackAdapter extends BaseAdapter<Track> implements TrackDownloadManager.DownloadListener {
 
     private final int VIEW_TYPE_ITEM = 0;
     private final int VIEW_TYPE_LOADING = 1;
@@ -94,6 +95,17 @@ public class TrackAdapter extends BaseAdapter<Track> {
         isLoading = false;
     }
 
+    @Override
+    public void onDownloadError(String msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDownloading() {
+        Toast.makeText(mContext, mContext.getString(R.string.msg_downloading),
+                Toast.LENGTH_SHORT).show();
+    }
+
     private class LoadingViewHolder extends RecyclerView.ViewHolder {
 
         private ProgressBar progressBar;
@@ -125,6 +137,7 @@ public class TrackAdapter extends BaseAdapter<Track> {
             mTextLikeCount = itemView.findViewById(R.id.text_number_favorite);
             mTextPlaybackCount = itemView.findViewById(R.id.text_number_play);
             mImageButtonOption = itemView.findViewById(R.id.img_button_options);
+
             mLastItemClickPosition = getAdapterPosition();
             mImageButtonOption.setOnClickListener(this);
             itemView.setOnClickListener(this);
@@ -153,7 +166,6 @@ public class TrackAdapter extends BaseAdapter<Track> {
                 popupMenu.getMenu().getItem(0).setTitle(R.string.msg_track_copyrighted);
             }
 
-            Log.i("kienkien2", "onClick: ");
             popupMenu.setOnMenuItemClickListener(this);
             popupMenu.show();
         }
@@ -179,6 +191,9 @@ public class TrackAdapter extends BaseAdapter<Track> {
                     }
                     if (popupMenu.getMenu().getItem(0).getTitle()
                             .equals(mContext.getString(R.string.action_download))) {
+                        new TrackDownloadManager(mContext,
+                                TrackAdapter.this)
+                                .download(mTrack);
                     }
                     return true;
                 default:
