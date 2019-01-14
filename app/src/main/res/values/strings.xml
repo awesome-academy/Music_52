@@ -9,4 +9,21 @@
     <string name="error_no_internet">internet not avaiable</string>
     <string name="title_genres">Genres</string>
     <string name="msg_listen_all">Listen all</string>
+    <string name="title_00_00">00:00</string>
+    <string name="msg_artist">Artist</string>
+    <string name="msg_1k">1K</string>
+    <string name="action_loading">Loading…</string>
+    <string name="msg_no_item_more">No item more</string>
+    <string name="msg_track_copyrighted">Track Copyrighted</string>
+    <string name="action_download">Download This Track</string>
+
+    <string-array name="music_genres">
+    <item>Pop</item>
+    <item>All music</item>
+    <item>All audio</item>
+    <item>Alternative Rock</item>
+    <item>Ambient</item>
+    <item>Classical</item>
+    <item>Country</item>
+    </string-array>
 </resources>
