@@ -6,12 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import java.util.List;
 
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private Context mContext;
-    private List<T> mData;
+    protected Context mContext;
+    protected List<T> mData;
 
-    private OnItemClickListener mItemClickListener;
-    private OnItemLongClickListener mItemLongClickListener;
-    private int mLastItemClickPosition = RecyclerView.NO_POSITION;
+    protected OnItemClickListener mItemClickListener;
+    protected OnItemLongClickListener mItemLongClickListener;
+    protected int mLastItemClickPosition = RecyclerView.NO_POSITION;
 
     public BaseAdapter(Context context, List<T> data) {
         mContext = context;

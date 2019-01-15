@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vn.kienphung.music_52">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".MusicPlayerApplication"
         android:allowBackup="true"
@@ -10,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/FullscreenTheme">
-        <activity android:name=".ui.main.MainActivity"
-            android:screenOrientation="portrait"
-            >
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
