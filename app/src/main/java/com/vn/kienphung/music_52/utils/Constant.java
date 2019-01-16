@@ -17,8 +17,10 @@ public class Constant {
     public static final String[] MUSIC_GENRES = {"pop", "all-music", "all-audio",
             "alternativerock", "ambient", "classical", "country"};
 
-    // String
+
     public static final String BREAK_LINE = "\n";
     public static final String INTERNET_NOT_AVAIABLE = "internet not avaiable";
     public static final String ARGUMENT_TIME_DELAY = "ARGUMENT_PLAY_ANIM";
+
+    public static final String FILE_EXTENTION = ".mp3";
 }

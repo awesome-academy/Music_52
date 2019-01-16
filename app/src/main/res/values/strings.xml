@@ -17,6 +17,9 @@
     <string name="msg_track_copyrighted">Track Copyrighted</string>
     <string name="action_download">Download This Track</string>
 
+    <string name="msg_cant_download">Can\'t download</string>
+    <string name="msg_downloading">Dowloading…</string>
+
     <string-array name="music_genres">
     <item>Pop</item>
     <item>All music</item>
@@ -26,4 +29,6 @@
     <item>Classical</item>
     <item>Country</item>
     </string-array>
+
+
 </resources>
