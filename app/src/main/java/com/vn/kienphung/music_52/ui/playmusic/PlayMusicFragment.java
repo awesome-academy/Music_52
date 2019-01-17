@@ -67,7 +67,7 @@ public class PlayMusicFragment extends Fragment implements ViewPager.OnPageChang
         mTextTotalTime = mViewRoot.findViewById(R.id.textview_total_time);
         mTextCurrentTime = mViewRoot.findViewById(R.id.textview_current_time);
         mSeekBarProgress = mViewRoot.findViewById(R.id.seek_bar_song);
-        mImageButtonDown = mViewRoot.findViewById(R.id.button_down);
+        mImageButtonDown = mViewRoot.findViewById(R.id.button_back);
         mImageButtonDown.setOnClickListener(this);
         mImageButtonPrevious = mViewRoot.findViewById(R.id.button_previous);
         mImageButtonPrevious.setOnClickListener(this);
