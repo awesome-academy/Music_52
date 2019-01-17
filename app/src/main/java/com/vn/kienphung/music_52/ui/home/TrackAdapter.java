@@ -25,7 +25,8 @@ import com.vn.kienphung.music_52.utils.StringUtil;
 
 import java.util.List;
 
-public class TrackAdapter extends BaseAdapter<Track> implements TrackDownloadManager.DownloadListener {
+public class TrackAdapter extends BaseAdapter<Track> implements
+        TrackDownloadManager.DownloadListener {
 
     private final int VIEW_TYPE_ITEM = 0;
     private final int VIEW_TYPE_LOADING = 1;
@@ -38,7 +39,8 @@ public class TrackAdapter extends BaseAdapter<Track> implements TrackDownloadMan
     public TrackAdapter(Context context, RecyclerView recyclerView, List<Track> data) {
         super(context, data);
 
-        final LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+        final LinearLayoutManager linearLayoutManager = (LinearLayoutManager)
+                recyclerView.getLayoutManager();
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -63,10 +65,12 @@ public class TrackAdapter extends BaseAdapter<Track> implements TrackDownloadMan
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_ITEM) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_track, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_track,
+                    parent, false);
             return new TrackViewHolder(view);
         } else if (viewType == VIEW_TYPE_LOADING) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_loading, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_loading,
+                    parent, false);
             return new LoadingViewHolder(view);
         }
         return null;
@@ -137,7 +141,6 @@ public class TrackAdapter extends BaseAdapter<Track> implements TrackDownloadMan
             mTextLikeCount = itemView.findViewById(R.id.text_number_favorite);
             mTextPlaybackCount = itemView.findViewById(R.id.text_number_play);
             mImageButtonOption = itemView.findViewById(R.id.img_button_options);
-
             mLastItemClickPosition = getAdapterPosition();
             mImageButtonOption.setOnClickListener(this);
             itemView.setOnClickListener(this);
