@@ -9,10 +9,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.vn.kienphung.music_52.R;
+import com.vn.kienphung.music_52.data.model.Track;
+import com.vn.kienphung.music_52.ui.home.HomeFragment;
+import com.vn.kienphung.music_52.ui.playmusic.PlayMusicFragment;
 import com.vn.kienphung.music_52.ui.splash.SplashFragment;
 import com.vn.kienphung.music_52.utils.FragmentManagerUtils;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements MainContract.View,HomeFragment.IPlayTrack {
 
     private final int SPLASH_DISPLAY_LENGTH = 3500;
     private MainContract.Presenter mPresenter;
@@ -65,6 +70,14 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             }
         });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void playTrack(List<Track> tracks, int position) {
+        PlayMusicFragment playMusicFragment = PlayMusicFragment.newInstance();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentManagerUtils.addFragment(manager, playMusicFragment,
+                R.id.main_content, playMusicFragment.getClass().getName(), true);
     }
 }
 

@@ -111,8 +111,10 @@ public class HomeFragment extends Fragment implements HomeContract.View,
     }
 
     @Override
-    public void onItemClick(List list, int position) {
-
+    public void onItemClick(List listTrack, int position) {
+        if (getActivity() instanceof IPlayTrack) {
+            ((IPlayTrack) getActivity()).playTrack(listTrack, position);
+        }
     }
 
     @Override
@@ -165,5 +167,8 @@ public class HomeFragment extends Fragment implements HomeContract.View,
     @Override
     public void setPresenter(HomeContract.Presenter presenter) {
         mPresenter = (HomePresenter) presenter;
+    }
+    public interface IPlayTrack {
+        void playTrack(List<Track> tracks, int position);
     }
 }
