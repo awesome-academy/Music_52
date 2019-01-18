@@ -26,4 +26,12 @@ public class Constant {
 
     public static final String EXTRA_POSITION = "EXTRA_POSITION";
     public static final String EXTRA_LIST_TRACK = "EXTRA_LIST_TRACK";
+
+    public static final String ACTION_MAIN = "com.vn.kienphung.music_52.ACTION_MAIN";
+    public static final String ACTION_PLAY_NOW = "com.vn.kienphung.music_52.ACTION_PLAY_NOW";
+    public static final String ACTION_PLAY_TOGGLE = "com.vn.kienphung.music_52p.ACTION.PLAY_TOGGLE";
+    public static final String ACTION_PLAY_PREVIOUS = "com.vn.kienphung.music_52.ACTION_PLAY_PREVIOUS";
+    public static final String ACTION_PLAY_NEXT = "com.vn.kienphung.music_52.ACTION.PLAY_NEXT";
+    public static final String ACTION_STOP_SERVICE = "com.vn.kienphung.music_52.ACTION.STOP_SERVICE";
+    public static final int REQUEST_PERMISSTION = 1;
 }

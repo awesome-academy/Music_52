@@ -13,7 +13,6 @@ import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.vn.kienphung.music_52.R;
 import com.vn.kienphung.music_52.data.model.Track;
