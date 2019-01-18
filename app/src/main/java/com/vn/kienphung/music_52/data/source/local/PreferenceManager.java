@@ -64,7 +64,7 @@ public class PreferenceManager {
         edit(context).putBoolean(KEY_IS_PLAYING, isPlaying).commit();
     }
 
-    public static void putListTrack(Context context, String tracks) {
+    public static void putTracks(Context context, String tracks) {
         edit(context).putString(KEY_LIST_TRACK, tracks).commit();
     }
 
@@ -75,7 +75,7 @@ public class PreferenceManager {
         return new Gson().fromJson(tracks, listType);
     }
 
-    public void putListTrack(Context context, List<Track> tracks) {
+    public static void putTracks(Context context, List<Track> tracks) {
         edit(context).putString(KEY_LIST_TRACK, new Gson().toJson(tracks)).commit();
     }
 }
