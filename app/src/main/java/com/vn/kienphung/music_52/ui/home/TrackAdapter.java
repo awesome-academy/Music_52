@@ -13,6 +13,7 @@ import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.vn.kienphung.music_52.R;
 import com.vn.kienphung.music_52.data.model.Track;
@@ -140,7 +141,6 @@ public class TrackAdapter extends BaseAdapter<Track> implements
             mTextLikeCount = itemView.findViewById(R.id.text_number_favorite);
             mTextPlaybackCount = itemView.findViewById(R.id.text_number_play);
             mImageButtonOption = itemView.findViewById(R.id.img_button_options);
-            mLastItemClickPosition = getAdapterPosition();
             mImageButtonOption.setOnClickListener(this);
             itemView.setOnClickListener(this);
         }
@@ -179,7 +179,7 @@ public class TrackAdapter extends BaseAdapter<Track> implements
                     setupsetupOptionsMenu();
                     break;
                 default:
-                    mItemClickListener.onItemClick(mData, mLastItemClickPosition);
+                    mItemClickListener.onItemClick(mData, getAdapterPosition());
 
             }
         }

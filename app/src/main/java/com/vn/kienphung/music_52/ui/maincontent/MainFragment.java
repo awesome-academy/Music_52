@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -15,16 +16,23 @@ import android.view.ViewGroup;
 
 import com.vn.kienphung.music_52.R;
 import com.vn.kienphung.music_52.ui.main.MainActivity;
+import com.vn.kienphung.music_52.ui.playmusic.PlayMusicFragment;
+import com.vn.kienphung.music_52.utils.Constant;
+import com.vn.kienphung.music_52.utils.FragmentManagerUtils;
 
 public class MainFragment extends Fragment implements TabLayout.OnTabSelectedListener {
-    public static final int ONE = 1 ;
-    public static final int TWO = 1 ;
+    public static final int ONE = 1;
+    public static final int TWO = 1;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private MainActivity mMainActivity;
 
-    public static MainFragment newInstance() {
-        return new MainFragment();
+    public static MainFragment newInstance(Boolean isOpenPlayFragment) {
+        MainFragment fragment = new MainFragment();
+        Bundle args = new Bundle();
+        args.putBoolean(Constant.ARGUMENT_IS_OPEN, isOpenPlayFragment);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -44,6 +52,18 @@ public class MainFragment extends Fragment implements TabLayout.OnTabSelectedLis
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Boolean isOpen = getArguments().getBoolean(Constant.ARGUMENT_IS_OPEN);
+        if (isOpen) {
+            FragmentManager manager = mMainActivity.getSupportFragmentManager();
+            PlayMusicFragment musicFragment = PlayMusicFragment.newInstance(null);
+            FragmentManagerUtils.addFragment(manager, musicFragment, R.id.main_content,
+                    musicFragment.getClass().getName(), true);
+        }
+    }
+
     private void initView(View view) {
         mViewPager = view.findViewById(R.id.view_pager);
         mTabLayout = view.findViewById(R.id.tablayout);
@@ -52,11 +72,13 @@ public class MainFragment extends Fragment implements TabLayout.OnTabSelectedLis
         mTabLayout.addOnTabSelectedListener(this);
         mTabLayout.setupWithViewPager(mViewPager);
     }
+
     private void setupTabIcons() {
         mTabLayout.getTabAt(TabType.HOME).setIcon(R.drawable.ic_home_selected);
         mTabLayout.getTabAt(TabType.LOCAL_MUSIC).setIcon(R.drawable.ic_local_unselected);
         mTabLayout.getTabAt(TabType.PLAYLIST).setIcon(R.drawable.ic_playlist_unselected);
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -67,7 +89,7 @@ public class MainFragment extends Fragment implements TabLayout.OnTabSelectedLis
     public void onTabSelected(TabLayout.Tab tab) {
         switch (tab.getPosition()) {
             case TabType.HOME:
-               showHomeTab();
+                showHomeTab();
                 break;
             case TabType.LOCAL_MUSIC:
                 showLocalMusicTab();
@@ -93,12 +115,14 @@ public class MainFragment extends Fragment implements TabLayout.OnTabSelectedLis
         mTabLayout.getTabAt(TabType.HOME).setIcon(R.drawable.ic_home_selected);
         mViewPager.setCurrentItem(0);
     }
-    public void showLocalMusicTab(){
+
+    public void showLocalMusicTab() {
         mMainActivity.setTitle(mMainActivity.getResources().getString(R.string.title_local_music));
         mTabLayout.getTabAt(TabType.LOCAL_MUSIC).setIcon(R.drawable.ic_local_selected);
         mViewPager.setCurrentItem(ONE);
     }
-    public void showPlaylistTab(){
+
+    public void showPlaylistTab() {
         mMainActivity.setTitle(mMainActivity.getResources().getString(R.string.title_playlist));
         mTabLayout.getTabAt(TabType.PLAYLIST).setIcon(R.drawable.ic_playlist_selected);
         mViewPager.setCurrentItem(TWO);

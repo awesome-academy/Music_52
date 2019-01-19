@@ -34,4 +34,7 @@ public class Constant {
     public static final String ACTION_PLAY_NEXT = "com.vn.kienphung.music_52.ACTION.PLAY_NEXT";
     public static final String ACTION_STOP_SERVICE = "com.vn.kienphung.music_52.ACTION.STOP_SERVICE";
     public static final int REQUEST_PERMISSTION = 1;
+
+    public static final String ARGUMENT_TRACKS_LIST = "ARGUMENT_TRACKS_LIST";
+    public static final String ARGUMENT_IS_OPEN = "ARGUMENT_IS_OPEN";
 }
